@@ -1,0 +1,35 @@
+version: '3'
+services:
+  ov-api:
+    image: gitgx.jelocartel.com:5000/rust-watcher
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./services/ov-api:/usr/src/app
+
+  # ov-web:
+  #   image: nginx
+  #   volumes:
+  #     - ./services/ov-web/default.conf:/etc/nginx/conf.d/default.conf
+  #     - ./services/ov-web/webroot:/usr/share/nginx/html
+  #   ports:
+  #     - "8080:80"
+
+  ov-db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: examplePass
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: outvoice
+    volumes:
+    - ./data/outvoice-db:/var/lib/mysql
+    - ./db/schema.sql:/docker-entrypoint-initdb.d/initial.sql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+
