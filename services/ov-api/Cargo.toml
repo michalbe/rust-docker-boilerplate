@@ -1,0 +1,18 @@
+[package]
+name = "ov-api"
+version = "0.1.0"
+authors = ["michalbe <michal@virtualdesign.pl>"]
+
+[dependencies]
+rocket = "0.3.6"
+rocket_codegen = "0.3.6"
+mysql = "12.3.0"
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"
+sha2="*"
+
+[dependencies.rocket_contrib]
+version = "*"
+default-features = false
+features = ["handlebars_templates", "tera_templates", "json"]
