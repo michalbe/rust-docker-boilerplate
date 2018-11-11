@@ -58,6 +58,7 @@ typings/
 .env
 
 services/*/target
+services/ov-web/webroot/bundle.js
 data/*
 **target**
 
