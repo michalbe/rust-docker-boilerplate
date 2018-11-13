@@ -7,13 +7,21 @@ services:
     volumes:
       - ./services/ov-api:/usr/src/app
 
-  # ov-web:
-  #   image: nginx
-  #   volumes:
-  #     - ./services/ov-web/default.conf:/etc/nginx/conf.d/default.conf
-  #     - ./services/ov-web/webroot:/usr/share/nginx/html
-  #   ports:
-  #     - "8080:80"
+  ov-web:
+    image: nginx
+    volumes:
+      - ./services/ov-web/default.conf:/etc/nginx/conf.d/default.conf
+      - ./services/ov-web/webroot:/usr/share/nginx/html
+    ports:
+      - "8080:80"
+
+  ov-web-watcher:
+   build:
+     context: ./services/ov-web/
+     dockerfile: Dockerfile-builder
+   volumes:
+     - ./services/ov-web/webroot:/usr/src/app/webroot
+     - ./services/ov-web/src:/usr/src/app/src
 
   ov-db:
     image: mariadb
