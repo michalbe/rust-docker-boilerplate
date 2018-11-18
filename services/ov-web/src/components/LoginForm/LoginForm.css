@@ -1,0 +1,19 @@
+.card {
+    width: 400px;
+    margin: auto;
+}
+
+.cardMedia {
+    height: 200px;
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: space-evenly;
+}
+
+.button {
+    margin-top: 20px !important;
+}

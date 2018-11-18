@@ -1,0 +1,10 @@
+:global(body) {
+    background: linear-gradient(135deg, rgba(141,163,204,1) 0%, rgba(255,255,255,1) 100%);
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+.content {
+    margin: auto;
+}
