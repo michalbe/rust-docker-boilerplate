@@ -1,19 +1,10 @@
-.card {
-    width: 400px;
+.login_container {
+    width: 300px;
+    height: 300px;
     margin: auto;
 }
 
-.cardMedia {
-    height: 200px;
-}
-
-.cardContent {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    justify-content: space-evenly;
-}
-
-.button {
-    margin-top: 20px !important;
+.form_field {
+    display: block;
+    margin: 10px;
 }

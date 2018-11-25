@@ -9,14 +9,12 @@ export class LoginForm extends React.Component {
 
         this.state = {
             login: '',
-            password: '',
-            loginError: false
+            password: ''
         };
 
         this.setLogin = this.setLogin.bind(this);
         this.setPassword = this.setPassword.bind(this);
-
-        this.handleClose = this.handleClose.bind(this);
+        this.performLoginAction = this.performLoginAction.bind(this);
     }
 
     setPassword(e) {
@@ -29,14 +27,6 @@ export class LoginForm extends React.Component {
         this.setState({
             login: e.target.value
         });
-    }
-
-    handleClose(event, reason) {
-        if (reason === 'clickaway') {
-            return;
-        }
-
-        this.setState({ loginError: false });
     }
 
     performLoginAction() {
@@ -56,31 +46,23 @@ export class LoginForm extends React.Component {
             return resp.json();
         })
         .then((json) => {
-            this.setState({
-                loginError: false
-            })
 
             if (json.status === 200) {
                 this.props.logMeIn(this.state.login);
             } else {
-                this.setState({
-                    loginError: true
-                });
+                alert('wrong password or login');
             }
         });
     }
 
-    handleClickShowPassword() {
-        this.setState({ showPassword: !this.state.showPassword });
-    }
-
-    handleMouseDownPassword(event) {
-        event.preventDefault();
-    }
-
     render() {
         return <div>
-            Login form
+            <div className={ styles.login_container }>
+                Login
+                <input type="text" className={styles.form_field} onChange={this.setLogin} />
+                <input type="password" className={styles.form_field} onChange={this.setPassword} />
+                <button onClick={this.performLoginAction}>Login</button>
+            </div>
         </div>
     }
 }
